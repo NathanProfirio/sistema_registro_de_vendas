@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <div class="dashboard-topo">
+
+        <div>
+            <p class="eyebrow">Análise</p>
+            <h1>Dashboard de vendas</h1>
+            <p>
+                Acompanhe faturamento, volume e ticket médio no período.
+            </p>
+        </div>
+
+        <a href="/" class="btn-voltar">
+            Registrar venda
+        </a>
+
+    </div>
+
+
+    <div class="card filtros">
+
+        <div class="filtros-cabecalho">
+            <h2>Filtros</h2>
+            <p>Escolha um atalho ou informe um intervalo de datas</p>
+        </div>
+
+        <div class="filtros-rapidos">
+
+            <button
+                type="button"
+                class="btn-rapido"
+                data-filtro="hoje"
+            >
+                Hoje
+            </button>
+
+            <button
+                type="button"
+                class="btn-rapido"
+                data-filtro="ontem"
+            >
+                Ontem
+            </button>
+
+            <button
+                type="button"
+                class="btn-rapido"
+                data-filtro="7dias"
+            >
+                Últimos 7 dias
+            </button>
+
+            <button
+                type="button"
+                class="btn-rapido"
+                data-filtro="mes"
+            >
+                Este mês
+            </button>
+
+        </div>
+
+        <div class="separador-filtros">
+            <span>ou período personalizado</span>
+        </div>
+
+        <div class="filtros-datas">
+
+            <div class="campo">
+
+                <label for="data-inicio">
+                    Data inicial
+                </label>
+
+                <input
+                    type="date"
+                    id="data-inicio"
+                >
+
+            </div>
+
+            <div class="campo">
+
+                <label for="data-fim">
+                    Data final
+                </label>
+
+                <input
+                    type="date"
+                    id="data-fim"
+                >
+
+            </div>
+
+            <div class="filtro-botoes">
+
+                <button
+                    type="button"
+                    id="btn-filtrar"
+                    class="btn-filtrar"
+                >
+                    Filtrar
+                </button>
+
+                <button
+                    type="button"
+                    id="btn-limpar"
+                    class="btn-limpar"
+                >
+                    Limpar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="cards-resumo">
+
+        <div class="card-resumo">
+            <div class="icone" aria-hidden="true">R$</div>
+            <div>
+                <p>Faturamento</p>
+                <strong id="faturamento">
+                    R$ 0,00
+                </strong>
+            </div>
+        </div>
+
+        <div class="card-resumo">
+            <div class="icone icone-alt" aria-hidden="true">Nº</div>
+            <div>
+                <p>Quantidade de vendas</p>
+                <strong id="quantidade-vendas">
+                    0
+                </strong>
+            </div>
+        </div>
+
+        <div class="card-resumo">
+            <div class="icone icone-warm" aria-hidden="true">Ø</div>
+            <div>
+                <p>Ticket médio</p>
+                <strong id="ticket-medio">
+                    R$ 0,00
+                </strong>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="graficos">
+
+        <div class="card grafico-card">
+
+            <div class="cabecalho cabecalho-esquerda">
+                <h2>Faturamento por dia</h2>
+                <p>
+                    Evolução do faturamento no período selecionado
+                </p>
+            </div>
+
+            <div class="grafico-container">
+                <canvas id="grafico-vendas"></canvas>
+            </div>
+
+            <p
+                id="sem-dados"
+                class="sem-dados"
+                hidden
+            >
+                Não existem vendas no período selecionado.
+            </p>
+
+        </div>
+
+        <div class="card grafico-card">
+
+            <div class="cabecalho cabecalho-esquerda">
+                <h2>Vendas por dia</h2>
+                <p>
+                    Quantidade de vendas realizadas por dia
+                </p>
+            </div>
+
+            <div class="grafico-container">
+                <canvas id="grafico-quantidade"></canvas>
+            </div>
+
+            <p
+                id="sem-dados-quantidade"
+                class="sem-dados"
+                hidden
+            >
+                Não existem vendas no período selecionado.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/js/dashboard.js"></script>
+
+{% endblock %}

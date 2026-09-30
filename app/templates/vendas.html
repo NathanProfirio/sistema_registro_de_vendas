@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Registrar Venda{% endblock %}
+
+{% block content %}
+
+<div class="pagina pagina-vendas">
+
+    <section class="intro">
+        <p class="eyebrow">Caixa</p>
+        <h1>Nova venda</h1>
+        <p class="intro-texto">
+            Informe a data e o valor para registrar. O histórico fica logo abaixo.
+        </p>
+    </section>
+
+    <div class="card card-formulario">
+
+        <div class="cabecalho">
+            <h1 id="titulo-formulario">Registrar venda</h1>
+            <p id="descricao-formulario">
+                Preencha os dados da venda
+            </p>
+        </div>
+
+        <form id="form-venda">
+
+            <div class="campo">
+                <label for="data_venda">Data da venda</label>
+
+                <input
+                    type="date"
+                    id="data_venda"
+                    name="data_venda"
+                    required
+                >
+            </div>
+
+            <div class="campo">
+                <label for="valor">Valor da venda</label>
+
+                <div class="valor-container">
+                    <span>R$</span>
+
+                    <input
+                        type="number"
+                        id="valor"
+                        name="valor"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="0,00"
+                        required
+                        autofocus
+                    >
+                </div>
+            </div>
+
+            <button type="submit" id="btn-registrar">
+                Registrar venda
+            </button>
+
+            <button
+                type="button"
+                id="btn-cancelar"
+                class="btn-cancelar"
+                hidden
+            >
+                Cancelar edição
+            </button>
+
+        </form>
+
+        <div id="mensagem" class="mensagem"></div>
+
+    </div>
+
+
+    <div class="card historico">
+
+        <div class="cabecalho cabecalho-esquerda">
+            <h2>Histórico de vendas</h2>
+            <p>Vendas já registradas no sistema</p>
+        </div>
+
+        <div id="lista-vendas">
+
+            <p class="carregando">
+                Carregando vendas...
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/static/js/vendas.js"></script>
+
+{% endblock %}
