@@ -6,11 +6,6 @@ const botao = document.getElementById("btn-registrar");
 const botaoCancelar = document.getElementById("btn-cancelar");
 const listaVendas = document.getElementById("lista-vendas");
 
-const tituloFormulario =
-    document.getElementById("titulo-formulario");
-
-const descricaoFormulario =
-    document.getElementById("descricao-formulario");
 
 
 // Guarda o ID da venda que está sendo editada
@@ -115,8 +110,8 @@ async function carregarVendas() {
                         <tr>
                             <th>Data</th>
                             <th>Horário</th>
-                            <th>Valor</th>
-                            <th>Ações</th>
+                            <th class="cabecalho-valor">Valor</th>
+                            <th></th>
                         </tr>
 
                     </thead>
@@ -220,12 +215,7 @@ async function editarVenda(id) {
         valorInput.value = Number(venda.valor).toFixed(2);
 
 
-        // Muda aparência do formulário
-        tituloFormulario.textContent =
-            "✏️ Editar Venda";
-
-        descricaoFormulario.textContent =
-            "Altere os dados da venda";
+       
 
 
         botao.textContent =
@@ -266,12 +256,6 @@ function cancelarEdicao() {
 
     colocarDataAtual();
 
-
-    tituloFormulario.textContent =
-        "🛒 Registrar Venda";
-
-    descricaoFormulario.textContent =
-        "Registre uma nova venda";
 
 
     botao.textContent =
